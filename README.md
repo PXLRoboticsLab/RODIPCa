@@ -5,7 +5,7 @@
    * url (String): the url of the camera stream
    * --name (String - Optional): the login name for the camera
    * --password (String - Optional): the login password for the camera
-   * --topic (String - Optional): the rostopic to subscribe to
+   * --topic (String - Optional): the name for the rostopic the data will be published to (default focus_vision/image/compressed)
    * --screen (store_true - Optional): shows a gui of the camera stream
 
 ## DLINK cameras that work with this project
