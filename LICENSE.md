@@ -1,4 +1,6 @@
- Copyright (c) 2017 PXL University College
+ MIT License
+
+Copyright (c) 2017 PXL University College
 
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
