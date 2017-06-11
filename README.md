@@ -2,7 +2,7 @@
 ## To run this project:
 1. Clone this repo into your catkin_ws
 2. rosrun RODIPCa connect.py url [--name] [--password] [--topic] [--screen]
-   * url (String): the url of the camera stream
+   * url (String): the url of the camera stream (make sure the url is a mjpeg stream)
    * --name (String - Optional): the login name for the camera
    * --password (String - Optional): the login password for the camera
    * --topic (String - Optional): the name for the rostopic the data will be published to (default focus_vision/image/compressed)
