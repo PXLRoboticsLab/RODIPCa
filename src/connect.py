@@ -3,10 +3,8 @@ import cv2
 import urllib
 import numpy as np
 from sensor_msgs.msg import Image
-import roslib
 import sys
 import rospy
-from std_msgs.msg import String
 from cv_bridge import CvBridge, CvBridgeError
 import argparse
 
@@ -16,23 +14,30 @@ class Connect():
     _name = None
     _password = None
     _topic = None
+    _fps = 30
     _screen = None
 
-    def __init__(self, url, name, password, topic, screen):
+    def __init__(self, url, name, password, topic, fps, screen):
         self._url = url
         self._name = name
         self._password = password
         self._topic = topic
+        self._fps = fps
         self._screen = screen
+
+        if "https://" in self._url:
+            self._url = self._url[8:]
+        elif "http://" in self._url:
+            self._url = self._url[7:]
 
         try:
             stream = urllib.urlopen('http://' + self._name + ':' + self._password + '@' + self._url)
         except:
-            rospy.logerr('Unable to open camera stream: ' + str(url))
+            rospy.logerr('Unable to open camera stream: ' + str(self._url))
             sys.exit()
 
-        image_pub = rospy.Publisher(self._topic, Image, queue_size=30)
-        rate = rospy.Rate(30)
+        image_pub = rospy.Publisher(self._topic, Image, queue_size=self._fps)
+        rate = rospy.Rate(self._fps)
         bridge = CvBridge()
         bytes = ''
 
@@ -68,7 +73,10 @@ if __name__ == '__main__':
                         help='The login password of the camera.', default="")
     parser.add_argument('--topic', type=str,
                         help='The name of the rostopic', default="focus_vision/image/compressed")
+    parser.add_argument('--fps', type=int,
+                        help='The max frame rate of the camera.', default=30)
     parser.add_argument('--screen', action='store_true',
                         help='Show a GUI of the camera stream.')
     args = parser.parse_args()
-    Connect(args.url, args.name, args.password, args.topic, args.screen)
+    Connect(args.url, args.name, args.password, args.topic, args.fps, args.screen)
+
