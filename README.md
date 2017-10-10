@@ -11,5 +11,6 @@
 
 ## DLINK cameras that work with this project
 * [DLink DCS-4602EV](http://www.dlink.com/uk/en/products/dcs-4602ev-full-hd-outdoor-vandal-proof-poe-dome-camera)
+* [DLink DCS-4802E](http://us.dlink.com/products/business-ip-cameras/vigilance-full-hd-outdoor-mini-dome-network-camera/)
 
 **If you tested the project with another IP camera that's not in the list send an email to: maarten.bloemen@student.pxl.be so we can add it to the list.**
