@@ -18,6 +18,9 @@ Follow the steps below to install and run the software on your local machine:
    * `--fps` (int - optional): the maximum framerate of the camera (default: 30)
    * `--screen` (store_true - Optional): shows a gui of the camera stream
 
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/PXLRoboticsLab/RODIPCa/blob/master/LICENSE.md)  file for details.
+
 ## DLINK cameras that work with this project
 * [DLink DCS-4602EV](http://www.dlink.com/uk/en/products/dcs-4602ev-full-hd-outdoor-vandal-proof-poe-dome-camera)
 * [DLink DCS-4802E](http://us.dlink.com/products/business-ip-cameras/vigilance-full-hd-outdoor-mini-dome-network-camera/)
