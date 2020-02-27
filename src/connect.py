@@ -14,24 +14,21 @@ class Connect():
     _name = None
     _password = None
     _topic = None
+    _stream = None
     _fps = 30
     _screen = None
 
-    def __init__(self, url, name, password, topic, fps, screen):
-        self._url = url
+    def __init__(self, url, name, password, stream, topic, fps, screen):
+        self._url = url.split("//")[-1]
         self._name = name
         self._password = password
+        self._stream = stream
         self._topic = topic
         self._fps = fps
         self._screen = screen
 
-        if "https://" in self._url:
-            self._url = self._url[8:]
-        elif "http://" in self._url:
-            self._url = self._url[7:]
-
         try:
-            stream = urllib.urlopen('http://' + self._name + ':' + self._password + '@' + self._url)
+            stream = urllib.urlopen('http://%s:%s@%s/%s' % (self._name, self._password, self._url, self._stream))
         except:
             rospy.logerr('Unable to open camera stream: ' + str(self._url))
             sys.exit()
@@ -71,12 +68,13 @@ if __name__ == '__main__':
                         help='The login name of the camera.', default="admin")
     parser.add_argument('--password', type=str,
                         help='The login password of the camera.', default="")
+    parser.add_argument('--stream', type=str,
+                        help='The video stream to be used.', default="video1.mjpg")
     parser.add_argument('--topic', type=str,
-                        help='The name of the rostopic', default="focus_vision/image/compressed")
+                        help='The name of the rostopic', default="dlink/image/compressed")
     parser.add_argument('--fps', type=int,
                         help='The max frame rate of the camera.', default=30)
     parser.add_argument('--screen', action='store_true',
                         help='Show a GUI of the camera stream.')
     args = parser.parse_args()
-    Connect(args.url, args.name, args.password, args.topic, args.fps, args.screen)
-
+    Connect(args.url, args.name, args.password, args.stream, args.topic, args.fps, args.screen)

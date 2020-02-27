@@ -14,7 +14,8 @@ Follow the steps below to install and run the software on your local machine:
    * `url` (String): the url of the camera stream (make sure the url is a mjpeg stream)
    * `--name` (String - Optional): the login name for the camera
    * `--password` (String - Optional): the login password for the camera
-   * `--topic` (String - Optional): the name for the rostopic the data will be published to (default: focus_vision/image/compressed)
+   * `--stream` (String - Optional): the video stream to be used (default: video1.mjpg)
+   * `--topic` (String - Optional): the name for the rostopic the data will be published to (default: dlink/image/compressed)
    * `--fps` (int - optional): the maximum framerate of the camera (default: 30)
    * `--screen` (store_true - Optional): shows a gui of the camera stream
 
