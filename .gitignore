@@ -189,6 +189,9 @@ msg/_*.py
 .project
 .cproject
 
+# vscode stuff
+.vscode
+
 # qcreator stuff
 CMakeLists.txt.user
 

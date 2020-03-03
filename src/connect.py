@@ -29,8 +29,9 @@ class Connect():
 
         try:
             stream = urllib.urlopen('http://%s:%s@%s/%s' % (self._name, self._password, self._url, self._stream))
-        except:
+        except Exception as e:
             rospy.logerr('Unable to open camera stream: ' + str(self._url))
+            print(e)
             sys.exit()
 
         image_pub = rospy.Publisher(self._topic, Image, queue_size=self._fps)
